@@ -96,6 +96,8 @@ public class CategoryServiceImpl implements ICategoryService {
         }
         //查找子节点，退出的条件
         List<Category> categoryList = categoryMapper.selectCategoryChildrenById(categoryId);
+
+        //如果categoryList为空就会跳出本次递归
         for (Category categoryItem : categoryList){
             findChildCategory(categorySet, categoryItem.getId());
         }
