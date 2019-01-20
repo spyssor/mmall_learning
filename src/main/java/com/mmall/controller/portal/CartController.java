@@ -101,7 +101,7 @@ public class CartController {
         if (user == null){
             return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENT.getCode(), ResponseCode.ILLEGAL_ARGUMENT.getDesc());
         }
-        return iCartService.selectOrUnSelect(user.getId(), productId, Const.Cart.UN_CHECKED);
+        return iCartService.selectOrUnSelect(user.getId(), productId, Const.Cart.CHECKED);
     }
 
     //单独反选

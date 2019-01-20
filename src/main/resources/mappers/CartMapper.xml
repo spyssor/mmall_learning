@@ -150,7 +150,7 @@
 
   <update id="checkedOrUnCheckedProduct" parameterType="map">
     update mmall_cart
-    set product_checked = #{checked},
+    set checked = #{checked},
     update_time = now()
     where user_id = #{userId}
     <if test="productId != null">
