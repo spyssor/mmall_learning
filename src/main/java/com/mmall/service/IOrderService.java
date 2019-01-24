@@ -8,7 +8,9 @@ public interface IOrderService {
 
     ServerResponse pay(Long orderNo, Integer userId, String path);
 
-    public ServerResponse aliCallback(Map<String, String> params);
+    ServerResponse aliCallback(Map<String, String> params);
 
     ServerResponse<Boolean> queryOrderPayStatus(Integer userid, Long orderNo);
+
+    ServerResponse createOrder(Integer userId, Integer shippingId);
 }

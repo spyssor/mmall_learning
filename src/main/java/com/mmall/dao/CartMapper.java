@@ -30,4 +30,5 @@ public interface CartMapper {
 
     int selectCartProductCount(Integer userId);
 
+    List<Cart> selectCheckCartByUserId(Integer userId);
 }

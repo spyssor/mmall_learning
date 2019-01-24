@@ -59,6 +59,15 @@ public class Const {
         public int getCode() {
             return code;
         }
+
+        public static ProductStatusEnum codeOf(int code){
+            for (ProductStatusEnum productStatusEnum : values()){
+                if (productStatusEnum.getCode() == code){
+                    return productStatusEnum;
+                }
+            }
+            throw new RuntimeException("没有找到对应的枚举");
+        }
     }
 
     public enum OrderStatusEnum{
@@ -106,4 +115,37 @@ public class Const {
             return code;
         }
     }
+
+    public enum PaymentTypeEnum{
+
+        ONLINE_PAY(1, "在线支付");
+
+        PaymentTypeEnum(int code, String value){
+            this.value = value;
+            this.code = code;
+        }
+
+        private String value;
+        private int code;
+
+        public String getValue() {
+            return value;
+        }
+
+        public int getCode() {
+            return code;
+        }
+
+        //用来返回整个枚举
+        public static PaymentTypeEnum codeOf(int code){
+            for (PaymentTypeEnum paymentTypeEnum : values()){
+                if (paymentTypeEnum.getCode() == code){
+                    return paymentTypeEnum;
+                }
+            }
+            throw new RuntimeException("没有找到对应的枚举");
+        }
+    }
+
+
 }
