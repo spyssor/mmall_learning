@@ -1,4 +1,4 @@
-package com.mmall.com.alipay.demo.trade;
+package com.alipay.demo.trade;
 
 import com.alipay.api.AlipayResponse;
 import com.alipay.api.domain.TradeFundBill;
