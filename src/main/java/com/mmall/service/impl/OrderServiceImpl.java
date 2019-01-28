@@ -76,12 +76,12 @@ public class OrderServiceImpl implements IOrderService {
     private List<OrderVO> assembleOrderVOList(List<Order> orderList, Integer userId){
         List<OrderVO> orderVOList = Lists.newArrayList();
         for (Order order : orderList){
-            List<OrderItem> orderItemList = Lists.newArrayList();
+            List<OrderItem> orderItemList;
             if (userId == null){
                 //管理员查询的时候 不需要传 userId
                 orderItemList = orderItemMapper.getByOrderNo(order.getOrderNo());
             }else{
-                orderItemList = orderItemMapper.getByOrderNoUserId(userId, order.getOrderNo());
+                orderItemList = orderItemMapper.getByOrderNoUserId(order.getOrderNo(), userId);
             }
             OrderVO orderVO = assembleOrderVO(order, orderItemList);
             orderVOList.add(orderVO);
@@ -94,7 +94,7 @@ public class OrderServiceImpl implements IOrderService {
     public ServerResponse<OrderVO> getOrderDetail(Integer userId, Long orderNo){
         Order order = orderMapper.selectByUserIdOrderNo(userId, orderNo);
         if (order != null){
-            List<OrderItem> orderItemList = orderItemMapper.getByOrderNoUserId(userId, orderNo);
+            List<OrderItem> orderItemList = orderItemMapper.getByOrderNoUserId(orderNo, userId);
             OrderVO orderVO = assembleOrderVO(order, orderItemList);
 
             return ServerResponse.createBySuccess(orderVO);
@@ -200,7 +200,7 @@ public class OrderServiceImpl implements IOrderService {
 
         orderVO.setPostage(order.getPostage());
         orderVO.setStatus(order.getStatus());
-        orderVO.setStatusDesc(Const.ProductStatusEnum.codeOf(order.getStatus()).getValue());
+        orderVO.setStatusDesc(Const.OrderStatusEnum.codeOf(order.getStatus()).getValue());
         orderVO.setShippingId(order.getShippingId());
 
         Shipping shipping = shippingMapper.selectByPrimaryKey(order.getShippingId());
@@ -407,7 +407,7 @@ public class OrderServiceImpl implements IOrderService {
         // 商品明细列表，需填写购买商品详细信息，
         List<GoodsDetail> goodsDetailList = new ArrayList<GoodsDetail>();
         // 创建一个商品信息，参数含义分别为商品id（使用国标）、名称、单价（单位为分）、数量，如果需要添加商品类别，详见GoodsDetail
-        List<OrderItem> orderItemList = orderItemMapper.getByOrderNoUserId(userId, orderNo);
+        List<OrderItem> orderItemList = orderItemMapper.getByOrderNoUserId(orderNo, userId);
         for (OrderItem orderItem : orderItemList) {
             GoodsDetail goods = GoodsDetail.newInstance(orderItem.getProductId().toString(), orderItem.getProductName(),
                     orderItem.getTotalPrice().longValue(), orderItem.getQuantity());

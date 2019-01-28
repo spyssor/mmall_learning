@@ -59,7 +59,8 @@ public class OrderManageController {
 
     @RequestMapping("search.do")
     @ResponseBody
-    public ServerResponse<PageInfo> orderSearch(HttpSession session, Long orderNo, int pageNum, int pageSize){
+    public ServerResponse<PageInfo> orderSearch(HttpSession session, Long orderNo, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+                                                @RequestParam(value = "pageSize", defaultValue = "10") int pageSize){
 
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {
@@ -74,7 +75,7 @@ public class OrderManageController {
 
     @RequestMapping("send_goods.do")
     @ResponseBody
-    public ServerResponse<String> orderSendGoods(HttpSession session, Long orderNo, int pageNum, int pageSize){
+    public ServerResponse<String> orderSendGoods(HttpSession session, Long orderNo){
 
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {

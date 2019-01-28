@@ -94,6 +94,15 @@ public class Const {
             return code;
         }
 
+        public static OrderStatusEnum codeOf(int code){
+            for (OrderStatusEnum orderStatusEnum : values()){
+                if (orderStatusEnum.getCode() == code){
+                    return orderStatusEnum;
+                }
+            }
+            throw new RuntimeException("没有找到对应的枚举");
+        }
+
     }
 
     public enum PayPlatFomEnum{
