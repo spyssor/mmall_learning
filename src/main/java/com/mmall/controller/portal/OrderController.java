@@ -98,25 +98,7 @@ public class OrderController {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //支付模块
 
     @RequestMapping("pay.do")
     @ResponseBody

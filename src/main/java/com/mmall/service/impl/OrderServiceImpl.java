@@ -339,23 +339,7 @@ public class OrderServiceImpl implements IOrderService {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //支付模块功能
 
     @Override
     public ServerResponse pay(Long orderNo, Integer userId, String path) {
