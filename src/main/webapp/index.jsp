@@ -1,8 +1,10 @@
+<%@ page language="java"  contentType="text/html; charset=UTF-8" %>
 <html>
-<head>
-    <meta http-equiv="content-type" content="txt/html; charset=utf-8" />
-</head>
+
 <body>
+<h2>Tomcat 1!</h2>
+<h2>Tomcat 1!</h2>
+<h2>Tomcat 1!</h2>
 <h2>Hello World!</h2>
 
 SpringMVC上传文件

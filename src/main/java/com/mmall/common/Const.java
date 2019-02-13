@@ -12,6 +12,11 @@ public class Const {
 
     public static final String USERNAME = "username";
 
+    public interface RedisCacheExTime{
+        int REDIS_SESSION_EXTIME = 60 * 30;//30分钟
+
+    }
+
     public interface AlipayCallback{
         String TRADE_STATUS_WAIT_BUYER_PAY = "WAIT_BUYER_PAY";
         String TRADE_STATUS_TRADE_SUCCESS = "TRADE_SUCCESS";
