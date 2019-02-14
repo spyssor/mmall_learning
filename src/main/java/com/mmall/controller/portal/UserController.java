@@ -51,7 +51,7 @@ public class UserController {
 
     @RequestMapping(value = "logout.do", method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse<String> logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+    public ServerResponse<String> logout(HttpServletRequest request, HttpServletResponse response) {
         String loginToken = CookieUtil.readLoginToken(request);
         CookieUtil.delLoginToken(request, response);
         RedisPoolUtil.del(loginToken);
@@ -74,7 +74,7 @@ public class UserController {
 
     @RequestMapping(value = "get_user_info.do", method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse<User> getUserInfo(HttpSession session, HttpServletRequest request) {
+    public ServerResponse<User> getUserInfo(HttpServletRequest request) {
 
         String loginToken = CookieUtil.readLoginToken(request);
         if (StringUtils.isEmpty(loginToken)){
