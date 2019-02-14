@@ -17,6 +17,11 @@ public class Const {
 
     }
 
+    public interface TokenCache{
+        int TOKEN_CACHE_EXTIME = 60 * 60 * 12;
+        String TOKEN_PREFIX = "token_";
+    }
+
     public interface AlipayCallback{
         String TRADE_STATUS_WAIT_BUYER_PAY = "WAIT_BUYER_PAY";
         String TRADE_STATUS_TRADE_SUCCESS = "TRADE_SUCCESS";
