@@ -25,9 +25,9 @@ public class RedisPool {
     //在borrow一个jedis实例的时候，是否要进行验证操作，如果赋值为true，则放回jedispool的jedis实例肯定是可以用的
     private static Boolean testOnReturn = Boolean.parseBoolean(PropertiesUtil.getProperty("redis.test.return", "true"));;
 
-    private static Integer redisPort = Integer.parseInt(PropertiesUtil.getProperty("redis.port"));
+    private static Integer redisPort = Integer.parseInt(PropertiesUtil.getProperty("redis1.port"));
 
-    private static String redisIp = PropertiesUtil.getProperty("redis.ip");
+    private static String redisIp = PropertiesUtil.getProperty("redis1.ip");
 
     private static void initPool(){
         JedisPoolConfig config = new JedisPoolConfig();
