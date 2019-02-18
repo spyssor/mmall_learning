@@ -33,6 +33,7 @@ public class UserManageController {
                 CookieUtil.writeLoginToken(httpServletresponse, session.getId());
                 String userJsonStr = JsonUtil.obj2String(user);
                 RedisShardedPoolUtil.setEx(session.getId(), userJsonStr, Const.RedisCacheExTime.REDIS_SESSION_EXTIME);
+
                 return response;
             }else{
                 return ServerResponse.createByErrorMessage("不是管理员，无法登陆");

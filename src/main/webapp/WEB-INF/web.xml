@@ -24,14 +24,28 @@
     </filter-mapping>
 
     <!-- 二期新增重置session时间的filter -->
+    <!--<filter>-->
+        <!--<filter-name>sessionExpireFilter</filter-name>-->
+        <!--<filter-class>com.mmall.controller.common.SessionExpireFilter</filter-class>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>sessionExpireFilter</filter-name>-->
+        <!--<url-pattern>*.do</url-pattern>-->
+    <!--</filter-mapping>-->
+
+
+    <!--二期Spring Session的filter-->
+    <!--spring 4.0.0Bean冲突了，需要调整到4.0.3就可以解决-->
     <filter>
-        <filter-name>sessionExpireFilter</filter-name>
-        <filter-class>com.mmall.controller.common.SessionExpireFilter</filter-class>
+        <filter-name>springSessionRepositoryFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>sessionExpireFilter</filter-name>
+        <filter-name>springSessionRepositoryFilter</filter-name>
         <url-pattern>*.do</url-pattern>
     </filter-mapping>
+
+
 
     <listener>
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
@@ -54,6 +68,11 @@
     </servlet>
 
 
+
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>dispatcher</servlet-name>-->
+        <!--<url-pattern>*.do</url-pattern>-->
+    <!--</servlet-mapping>-->
 
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
